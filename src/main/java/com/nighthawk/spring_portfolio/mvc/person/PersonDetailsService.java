@@ -6,10 +6,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import src.main.java.com.nighthawk.spring_portfolio.mvc.person.PersonRole;
-import src.main.java.com.nighthawk.spring_portfolio.mvc.person.PersonRoleJpaRepository;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.ArrayList;

@@ -4,92 +4,94 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Convert;
+import static jakarta.persistence.FetchType.EAGER;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.vladmihalcea.hibernate.type.json.JsonType;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 /*
-Adapted from Person POJO, Plain Old Java Object.
+Person is a POJO, Plain Old Java Object.
+First set of annotations add functionality to POJO
+--- @Setter @Getter @ToString @NoArgsConstructor @RequiredArgsConstructor
+The last annotation connect to database
+--- @Entity
  */
-public class Person extends Generics{
-    // Class data
-    private static String classType = "Person";
-    public static KeyTypes key = KeyType.title;  // static initializer
-	public static void setOrder(KeyTypes key) {Person.key = key;}
-	public enum KeyType implements KeyTypes {title, uid, name, dob, age}
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Convert(attributeName ="person", converter = JsonType.class)
+public class Person {
 
-    // Instance data
-    private String uid;  // user / person id
+    // automatic unique identifier for Person record
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    // email, password, roles are key attributes to login and authentication
+    @NotEmpty
+    @Size(min=5)
+    @Column(unique=true)
+    @Email
+    private String email;
+
+    @NotEmpty
     private String password;
+
+    // @NonNull, etc placed in params of constructor: "@NonNull @Size(min = 2, max = 30, message = "Name (2 to 30 chars)") String name"
+    @NonNull
+    @Size(min = 2, max = 30, message = "Name (2 to 30 chars)")
     private String name;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dob;
+
+    // To be implemented
+    @ManyToMany(fetch = EAGER)
+    private Collection<PersonRole> roles = new ArrayList<>();
+
+    /* HashMap is used to store JSON for daily "stats"
+    "stats": {
+        "2022-11-13": {
+            "calories": 2200,
+            "steps": 8000
+        }
+    }
+    */
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    private Map<String,Map<String, Object>> stats = new HashMap<>(); 
     
 
-    // Constructor with zero arguments
-    public Person() {
-        super.setType(classType);
-    }
-
     // Constructor used when building object from an API
-    public Person(String uid, String password, String name, Date dob) {
-        this();  // runs zero argument constructor
-        this.uid = uid;
+    public Person(String email, String password, String name, Date dob) {
+        this.email = email;
         this.password = password;
         this.name = name;
-        this.dob = dob;
-    }
-
-    /* 'Generics' requires getKey to help enforce KeyTypes usage */
-	@Override
-	protected KeyTypes getKey() { return Person.key; }
-
-    public String getUserID() {
-        return uid;
-    }
-
-    /* 'Generics' requires toString override
-	 * toString provides data based off of Static Key setting
-	 */
-	@Override
-	public String toString() {		
-		String output="";
-		if (KeyType.uid.equals(this.getKey())) {
-			output += this.uid;
-		} else if (KeyType.name.equals(this.getKey())) {
-			output += this.name;
-		} else if (KeyType.age.equals(this.getKey())) {
-			output += "0000" + this.getAge();  // pads integer 1,100,11,2 to 0001,0100,0011,0002
-			output = output.substring(output.length() - 4);
-		} else {
-			output = super.getType() + ": " + this.uid + ", " + this.name + ", " + this.getAge();
-		}
-		return output;
-	}
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
         this.dob = dob;
     }
 
@@ -107,7 +109,7 @@ public class Person extends Generics{
         // basics of class construction
         Person p1 = new Person();
         p1.setName("Thomas Edison");
-        p1.setUid("toby@gmail.com");
+        p1.setEmail("toby@gmail.com");
         p1.setPassword("123Toby!");
         // adding Note to notes collection
         try {  // All data that converts formats could fail
@@ -119,7 +121,7 @@ public class Person extends Generics{
 
         Person p2 = new Person();
         p2.setName("Alexander Graham Bell");
-        p2.setUid("lexb@gmail.com");
+        p2.setEmail("lexb@gmail.com");
         p2.setPassword("123LexB!");
         try {
             Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-1845");
@@ -129,7 +131,7 @@ public class Person extends Generics{
 
         Person p3 = new Person();
         p3.setName("Nikola Tesla");
-        p3.setUid("niko@gmail.com");
+        p3.setEmail("niko@gmail.com");
         p3.setPassword("123Niko!");
         try {
             Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-1850");
@@ -137,22 +139,23 @@ public class Person extends Generics{
         } catch (Exception e) {
         }
 
-        Person p4 = null;
-        Person p5 = null;
+        Person p4 = new Person();
+        p4.setName("Madam Currie");
+        p4.setEmail("madam@gmail.com");
+        p4.setPassword("123Madam!");
         try {
-            p4 = new Person(
-                "madam@gmail.com",
-                "123Madam!",
-                "Madam Currie", 
-                new SimpleDateFormat("MM-dd-yyyy").parse("01-01-2023")
-            );
-    
-            p5 = new Person(
-                "jm1021@gmail.com", 
-                "123Qwerty!",
-                "John Mortensen",
-                new SimpleDateFormat("MM-dd-yyyy").parse("10-21-1959")
-            );
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-1860");
+            p4.setDob(d);
+        } catch (Exception e) {
+        }
+
+        Person p5 = new Person();
+        p5.setName("John Mortensen");
+        p5.setEmail("jm1021@gmail.com");
+        p5.setPassword("123Qwerty!");
+        try {
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("10-21-1959");
+            p5.setDob(d);
         } catch (Exception e) {
         }
 
@@ -164,10 +167,9 @@ public class Person extends Generics{
     public static void main(String[] args) {
         // obtain Person from initializer
         Person persons[] = init();
-        Person.setOrder(Person.KeyType.title);
 
         // iterate using "enhanced for loop"
-        for( Person person : persons ) {
+        for( Person person : persons) {
             System.out.println(person);  // print object
         }
     }
