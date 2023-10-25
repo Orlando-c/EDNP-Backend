@@ -108,53 +108,53 @@ public class Person {
 
         // basics of class construction
         Person p1 = new Person();
-        p1.setName("Thomas Edison");
-        p1.setEmail("toby@gmail.com");
-        p1.setPassword("123Toby!");
+        p1.setName("Orlando Carcamo");
+        p1.setEmail("orlandocy@gmail.com");
+        p1.setPassword("123OC!");
         // adding Note to notes collection
         try {  // All data that converts formats could fail
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-1840");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-2006");
             p1.setDob(d);
         } catch (Exception e) {
             // no actions as dob default is good enough
         }
 
         Person p2 = new Person();
-        p2.setName("Alexander Graham Bell");
-        p2.setEmail("lexb@gmail.com");
-        p2.setPassword("123LexB!");
+        p2.setName("Soham Kamat");
+        p2.setEmail("sohamk@gmail.com");
+        p2.setPassword("123SK!");
         try {
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-1845");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-02-2006");
             p2.setDob(d);
         } catch (Exception e) {
         }
 
         Person p3 = new Person();
-        p3.setName("Nikola Tesla");
-        p3.setEmail("niko@gmail.com");
-        p3.setPassword("123Niko!");
+        p3.setName("Aniket Chakradeo");
+        p3.setEmail("aniketc@gmail.com");
+        p3.setPassword("123AC!");
         try {
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-1850");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-03-2006");
             p3.setDob(d);
         } catch (Exception e) {
         }
 
         Person p4 = new Person();
-        p4.setName("Madam Currie");
-        p4.setEmail("madam@gmail.com");
-        p4.setPassword("123Madam!");
+        p4.setName("Kevin Du");
+        p4.setEmail("kevind@gmail.com");
+        p4.setPassword("123KD!");
         try {
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-1860");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-04-2006");
             p4.setDob(d);
         } catch (Exception e) {
         }
 
         Person p5 = new Person();
-        p5.setName("John Mortensen");
-        p5.setEmail("jm1021@gmail.com");
-        p5.setPassword("123Qwerty!");
+        p5.setName("Billy Goat");
+        p5.setEmail("billyg@gmail.com");
+        p5.setPassword("123BG!");
         try {
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("10-21-1959");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-05-2006");
             p5.setDob(d);
         } catch (Exception e) {
         }

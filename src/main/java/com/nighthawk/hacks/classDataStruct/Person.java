@@ -15,12 +15,13 @@ public class Person extends Generics{
     private static String classType = "Person";
     public static KeyTypes key = KeyType.title;  // static initializer
 	public static void setOrder(KeyTypes key) {Person.key = key;}
-	public enum KeyType implements KeyTypes {title, uid, name}
+	public enum KeyType implements KeyTypes {title, uid, name, dob, age}
 
     // Instance data
     private String uid;  // user / person id
     private String password;
     private String name;
+    private Date dob;
     
 
     // Constructor with zero arguments
@@ -29,11 +30,12 @@ public class Person extends Generics{
     }
 
     // Constructor used when building object from an API
-    public Person(String uid, String password, String name) {
+    public Person(String uid, String password, String name, Date dob) {
         this();  // runs zero argument constructor
         this.uid = uid;
         this.password = password;
         this.name = name;
+        this.dob = dob;
     }
 
     /* 'Generics' requires getKey to help enforce KeyTypes usage */
@@ -47,15 +49,18 @@ public class Person extends Generics{
     /* 'Generics' requires toString override
 	 * toString provides data based off of Static Key setting
 	 */
-    @Override
+	@Override
 	public String toString() {		
 		String output="";
 		if (KeyType.uid.equals(this.getKey())) {
 			output += this.uid;
 		} else if (KeyType.name.equals(this.getKey())) {
 			output += this.name;
+		} else if (KeyType.age.equals(this.getKey())) {
+			output += "0000" + this.getAge();  // pads integer 1,100,11,2 to 0001,0100,0011,0002
+			output = output.substring(output.length() - 4);
 		} else {
-			output = super.getType() + ": " + this.uid + ", " + this.name;
+			output = super.getType() + ": " + this.uid + ", " + this.name + ", " + this.getAge();
 		}
 		return output;
 	}
@@ -80,29 +85,79 @@ public class Person extends Generics{
         this.name = name;
     }
 
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    // A custom getter to return age from dob attribute
+    public int getAge() {
+        if (this.dob != null) {
+            LocalDate birthDay = this.dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            return Period.between(birthDay, LocalDate.now()).getYears(); }
+        return -1;
+    }
+
     // Initialize static test data 
     public static Person[] init() {
 
         // basics of class construction
         Person p1 = new Person();
         p1.setName("Orlando Carcamo");
-        p1.setUid("landoc@gmail.com");
-        p1.setPassword("123Toby!");
+        p1.setUid("orlandoc@gmail.com");
+        p1.setPassword("123OC!");
+        // adding Note to notes collection
+        try {  // All data that converts formats could fail
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-2006");
+            p1.setDob(d);
+        } catch (Exception e) {
             // no actions as dob default is good enough
+        }
 
         Person p2 = new Person();
-        p2.setName("Aniket Chakradeo");
-        p2.setUid("AniCriKet@gmail.com");
-        p2.setPassword("123LexB!");
-
+        p2.setName("Soham Kamat");
+        p2.setUid("sohamk@gmail.com");
+        p2.setPassword("123SK!");
+        try {
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-02-2006");
+            p2.setDob(d);
+        } catch (Exception e) {
+        }
 
         Person p3 = new Person();
-        p3.setName("Koham Somat");
-        p3.setUid("sohamk@gmail.com");
-        p3.setPassword("123Niko!");
+        p3.setName("Aniket Chakradeo");
+        p3.setUid("aniketc@gmail.com");
+        p3.setPassword("123AC!");
+        try {
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-03-2006");
+            p3.setDob(d);
+        } catch (Exception e) {
+        }
+
+        Person p4 = null;
+        Person p5 = null;
+        try {
+            p4 = new Person(
+                "kevind@gmail.com",
+                "123KD!",
+                "Kevin Du", 
+                new SimpleDateFormat("MM-dd-yyyy").parse("01-04-2006")
+            );
+    
+            p5 = new Person(
+                "billyg@gmail.com", 
+                "123BG!",
+                "Billy Goat",
+                new SimpleDateFormat("MM-dd-yyyy").parse("01-05-2006")
+            );
+        } catch (Exception e) {
+        }
 
         // Array definition and data initialization
-        Person persons[] = {p1, p2, p3};
+        Person persons[] = {p1, p2, p3, p4, p5};
         return(persons);
     }
 
