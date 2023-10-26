@@ -106,33 +106,33 @@ public class Person extends Generics{
 
         // basics of class construction
         Person p1 = new Person();
-        p1.setName("Thomas Edison");
-        p1.setUid("toby@gmail.com");
-        p1.setPassword("123Toby!");
+        p1.setName("Orlando Carcamo");
+        p1.setUid("orlandoc@gmail.com");
+        p1.setPassword("123OC!");
         // adding Note to notes collection
         try {  // All data that converts formats could fail
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-1840");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-2006");
             p1.setDob(d);
         } catch (Exception e) {
             // no actions as dob default is good enough
         }
 
         Person p2 = new Person();
-        p2.setName("Alexander Graham Bell");
-        p2.setUid("lexb@gmail.com");
-        p2.setPassword("123LexB!");
+        p2.setName("Soham Kamat");
+        p2.setUid("sohamk@gmail.com");
+        p2.setPassword("123SK!");
         try {
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-1845");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-02-2006");
             p2.setDob(d);
         } catch (Exception e) {
         }
 
         Person p3 = new Person();
-        p3.setName("Nikola Tesla");
-        p3.setUid("niko@gmail.com");
-        p3.setPassword("123Niko!");
+        p3.setName("Aniket Chakradeo");
+        p3.setUid("aniketc@gmail.com");
+        p3.setPassword("123AC!");
         try {
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-1850");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-03-2006");
             p3.setDob(d);
         } catch (Exception e) {
         }
@@ -141,17 +141,17 @@ public class Person extends Generics{
         Person p5 = null;
         try {
             p4 = new Person(
-                "madam@gmail.com",
-                "123Madam!",
-                "Madam Currie", 
-                new SimpleDateFormat("MM-dd-yyyy").parse("01-01-2023")
+                "kevind@gmail.com",
+                "123KD!",
+                "Kevin Du", 
+                new SimpleDateFormat("MM-dd-yyyy").parse("01-04-2006")
             );
     
             p5 = new Person(
-                "jm1021@gmail.com", 
-                "123Qwerty!",
-                "John Mortensen",
-                new SimpleDateFormat("MM-dd-yyyy").parse("10-21-1959")
+                "billyg@gmail.com", 
+                "123BG!",
+                "Billy Goat",
+                new SimpleDateFormat("MM-dd-yyyy").parse("01-05-2006")
             );
         } catch (Exception e) {
         }
