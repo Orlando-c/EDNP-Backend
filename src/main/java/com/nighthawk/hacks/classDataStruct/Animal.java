@@ -1,4 +1,4 @@
-package com.nighthawk.hacks.classDataStruct;
+package src.main.java.com.nighthawk.hacks.classDataStruct;
 
 /*
  * Animal class extends Generics and defines abstract methods

@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.covid;
+package src.main.java.com.nighthawk.spring_portfolio.mvc.covid;
 
 import java.net.URI;
 import java.net.http.HttpClient;

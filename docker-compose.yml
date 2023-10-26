@@ -1,10 +1,10 @@
 version: '3'
 services:
   web:
-    image: flask_no_papels
+    image: java_springv1
     build: .
     ports:
-      - "8765:8765"
+      - "8023:8023"
     volumes:
        - ./volumes:/volumes
     restart: unless-stopped

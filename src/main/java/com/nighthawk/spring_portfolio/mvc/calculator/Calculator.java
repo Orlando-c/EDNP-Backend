@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.calculator;
+package src.main.java.com.nighthawk.spring_portfolio.mvc.calculator;
 
 import java.util.ArrayList;
 import java.util.HashMap;

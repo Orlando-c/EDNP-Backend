@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.person;
+package src.main.java.com.nighthawk.spring_portfolio.mvc.person;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,9 +22,6 @@ public class PersonApiController {
     // Autowired enables Control to connect POJO Object through JPA
     @Autowired
     private PersonJpaRepository repository;
-
-    @Autowired
-    private PersonDetailsService personDetailsService;
 
     /*
     GET List of People
@@ -79,7 +76,7 @@ public class PersonApiController {
         }
         // A person object WITHOUT ID will create a new record with default roles as student
         Person person = new Person(email, password, name, dob);
-        personDetailsService.save(person);
+        repository.save(person);
         return new ResponseEntity<>(email +" is created successfully", HttpStatus.CREATED);
     }
 

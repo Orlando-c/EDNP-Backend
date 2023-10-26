@@ -1,4 +1,4 @@
-package com.nighthawk.hacks.methodsDataTypes;
+package src.main.java.com.nighthawk.hacks.methodsDataTypes;
 
 import java.util.HashMap;
 import java.util.Map;

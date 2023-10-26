@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.person;
+package src.main.java.com.nighthawk.spring_portfolio.mvc.person;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -10,20 +10,19 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Convert;
-import static jakarta.persistence.FetchType.EAGER;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import static javax.persistence.FetchType.EAGER;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.vladmihalcea.hibernate.type.json.JsonType;
@@ -44,7 +43,7 @@ The last annotation connect to database
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Convert(attributeName ="person", converter = JsonType.class)
+@TypeDef(name="json", typeClass = JsonType.class)
 public class Person {
 
     // automatic unique identifier for Person record
@@ -82,7 +81,7 @@ public class Person {
         }
     }
     */
-    @JdbcTypeCode(SqlTypes.JSON)
+    @Type(type="json")
     @Column(columnDefinition = "jsonb")
     private Map<String,Map<String, Object>> stats = new HashMap<>(); 
     
@@ -108,53 +107,53 @@ public class Person {
 
         // basics of class construction
         Person p1 = new Person();
-        p1.setName("Orlando Carcamo");
-        p1.setEmail("orlandocy@gmail.com");
-        p1.setPassword("123OC!");
+        p1.setName("Thomas Edison");
+        p1.setEmail("toby@gmail.com");
+        p1.setPassword("123Toby!");
         // adding Note to notes collection
         try {  // All data that converts formats could fail
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-2006");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-1840");
             p1.setDob(d);
         } catch (Exception e) {
             // no actions as dob default is good enough
         }
 
         Person p2 = new Person();
-        p2.setName("Soham Kamat");
-        p2.setEmail("sohamk@gmail.com");
-        p2.setPassword("123SK!");
+        p2.setName("Alexander Graham Bell");
+        p2.setEmail("lexb@gmail.com");
+        p2.setPassword("123LexB!");
         try {
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-02-2006");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-1845");
             p2.setDob(d);
         } catch (Exception e) {
         }
 
         Person p3 = new Person();
-        p3.setName("Aniket Chakradeo");
-        p3.setEmail("aniketc@gmail.com");
-        p3.setPassword("123AC!");
+        p3.setName("Nikola Tesla");
+        p3.setEmail("niko@gmail.com");
+        p3.setPassword("123Niko!");
         try {
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-03-2006");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-1850");
             p3.setDob(d);
         } catch (Exception e) {
         }
 
         Person p4 = new Person();
-        p4.setName("Kevin Du");
-        p4.setEmail("kevind@gmail.com");
-        p4.setPassword("123KD!");
+        p4.setName("Madam Currie");
+        p4.setEmail("madam@gmail.com");
+        p4.setPassword("123Madam!");
         try {
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-04-2006");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-1860");
             p4.setDob(d);
         } catch (Exception e) {
         }
 
         Person p5 = new Person();
-        p5.setName("Billy Goat");
-        p5.setEmail("billyg@gmail.com");
-        p5.setPassword("123BG!");
+        p5.setName("John Mortensen");
+        p5.setEmail("jm1021@gmail.com");
+        p5.setPassword("123Qwerty!");
         try {
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-05-2006");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("10-21-1959");
             p5.setDob(d);
         } catch (Exception e) {
         }

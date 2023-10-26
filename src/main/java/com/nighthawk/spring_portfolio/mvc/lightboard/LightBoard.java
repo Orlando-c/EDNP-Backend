@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.lightboard;
+package src.main.java.com.nighthawk.spring_portfolio.mvc.lightboard;
 
 import lombok.Data;
 
