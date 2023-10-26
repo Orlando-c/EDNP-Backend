@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.spring_portfolio;
+package com.nighthawk.spring_portfolio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import com.nighthawk.spring_portfolio.mvc.jwt.JwtAuthenticationEntryPoint;

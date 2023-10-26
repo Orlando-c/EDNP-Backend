@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.spring_portfolio.mvc.jwt;
+package com.nighthawk.spring_portfolio.mvc.jwt;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;

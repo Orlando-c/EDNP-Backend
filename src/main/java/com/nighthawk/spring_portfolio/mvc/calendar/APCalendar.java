@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.spring_portfolio.mvc.calendar;
+package com.nighthawk.spring_portfolio.mvc.calendar;
 
 // Prototype Implementation
 

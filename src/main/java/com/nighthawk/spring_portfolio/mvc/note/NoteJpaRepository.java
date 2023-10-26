@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.spring_portfolio.mvc.note;
+package com.nighthawk.spring_portfolio.mvc.note;
 
 import java.util.List;
 

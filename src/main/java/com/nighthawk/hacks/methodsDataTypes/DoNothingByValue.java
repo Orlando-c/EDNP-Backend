@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.hacks.methodsDataTypes;
+package com.nighthawk.hacks.methodsDataTypes;
 
 public class DoNothingByValue {
     public int[] arr;

@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.hacks.classDataStruct;
+package com.nighthawk.hacks.classDataStruct;
 /**
  *  Implementation of a Double Linked List;  forward and backward links point to adjacent Nodes.
  *

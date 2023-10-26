@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.spring_portfolio.mvc.cancer;
+package com.nighthawk.spring_portfolio.mvc.cancer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

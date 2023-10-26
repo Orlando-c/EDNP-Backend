@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.hacks.classDataStruct;
+package com.nighthawk.hacks.classDataStruct;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

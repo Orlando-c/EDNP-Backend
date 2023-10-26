@@ -1,6 +1,6 @@
 
 
-package src.main.java.com.nighthawk.spring_portfolio.mvc.cancer;
+package com.nighthawk.spring_portfolio.mvc.cancer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.hacks.methodsDataTypes;
+package com.nighthawk.hacks.methodsDataTypes;
 
 // matrix class is used to store and format the output of a matrix
 public class Matrix {

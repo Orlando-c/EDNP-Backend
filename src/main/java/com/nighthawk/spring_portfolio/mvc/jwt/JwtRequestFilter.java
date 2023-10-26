@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.spring_portfolio.mvc.jwt;
+package com.nighthawk.spring_portfolio.mvc.jwt;
 
 import java.io.IOException;
 

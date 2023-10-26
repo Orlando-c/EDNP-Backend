@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.spring_portfolio.mvc.memorial;
+package com.nighthawk.spring_portfolio.mvc.memorial;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

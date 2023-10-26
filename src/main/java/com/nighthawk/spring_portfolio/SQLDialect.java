@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.spring_portfolio;
+package com.nighthawk.spring_portfolio;
 
 import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.function.SQLFunctionTemplate;

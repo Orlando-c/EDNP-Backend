@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.hacks.classDataStruct;
+package com.nighthawk.hacks.classDataStruct;
 
 public class Cupcakes extends Generics {
 	// Class data

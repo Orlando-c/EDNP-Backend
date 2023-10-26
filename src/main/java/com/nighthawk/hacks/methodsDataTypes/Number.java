@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.hacks.methodsDataTypes;
+package com.nighthawk.hacks.methodsDataTypes;
 
 import java.util.ArrayList;
 

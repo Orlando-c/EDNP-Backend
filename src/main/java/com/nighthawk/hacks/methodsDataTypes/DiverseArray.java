@@ -1,4 +1,4 @@
-package src.main.java.com.nighthawk.hacks.methodsDataTypes;
+package com.nighthawk.hacks.methodsDataTypes;
 
 // DiverseArray learnings
 /* All Array and 2D array questions will have similar patterns
