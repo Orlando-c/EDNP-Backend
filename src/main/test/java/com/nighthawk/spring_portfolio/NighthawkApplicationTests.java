@@ -1,4 +1,4 @@
-package src.main.test.java.com.nighthawk.spring_portfolio;
+package com.example.nighthawk;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
