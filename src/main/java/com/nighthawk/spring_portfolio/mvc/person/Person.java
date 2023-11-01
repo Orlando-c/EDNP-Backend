@@ -10,19 +10,20 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import static javax.persistence.FetchType.EAGER;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Convert;
+import static jakarta.persistence.FetchType.EAGER;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.vladmihalcea.hibernate.type.json.JsonType;
@@ -43,7 +44,7 @@ The last annotation connect to database
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@TypeDef(name="json", typeClass = JsonType.class)
+@Convert(attributeName ="person", converter = JsonType.class)
 public class Person {
 
     // automatic unique identifier for Person record
@@ -81,7 +82,7 @@ public class Person {
         }
     }
     */
-    @Type(type="json")
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
     private Map<String,Map<String, Object>> stats = new HashMap<>(); 
     
@@ -108,11 +109,11 @@ public class Person {
         // basics of class construction
         Person p1 = new Person();
         p1.setName("Orlando Carcamo");
-        p1.setEmail("orlandocy@gmail.com");
-        p1.setPassword("123OC!");
+        p1.setEmail("orlando@gmail.com");
+        p1.setPassword("123Orlando!");
         // adding Note to notes collection
         try {  // All data that converts formats could fail
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-01-2006");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("12-08-2006");
             p1.setDob(d);
         } catch (Exception e) {
             // no actions as dob default is good enough
@@ -120,8 +121,8 @@ public class Person {
 
         Person p2 = new Person();
         p2.setName("Soham Kamat");
-        p2.setEmail("sohamk@gmail.com");
-        p2.setPassword("123SK!");
+        p2.setEmail("soham@gmail.com");
+        p2.setPassword("123Soham!");
         try {
             Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-02-2006");
             p2.setDob(d);
@@ -130,8 +131,8 @@ public class Person {
 
         Person p3 = new Person();
         p3.setName("Aniket Chakradeo");
-        p3.setEmail("aniketc@gmail.com");
-        p3.setPassword("123AC!");
+        p3.setEmail("aniket@gmail.com");
+        p3.setPassword("123Aniket!");
         try {
             Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-03-2006");
             p3.setDob(d);
@@ -140,8 +141,8 @@ public class Person {
 
         Person p4 = new Person();
         p4.setName("Kevin Du");
-        p4.setEmail("kevind@gmail.com");
-        p4.setPassword("123KD!");
+        p4.setEmail("kevin@gmail.com");
+        p4.setPassword("123Kevin!");
         try {
             Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-04-2006");
             p4.setDob(d);
@@ -149,11 +150,11 @@ public class Person {
         }
 
         Person p5 = new Person();
-        p5.setName("Billy Goat");
-        p5.setEmail("billyg@gmail.com");
-        p5.setPassword("123BG!");
+        p5.setName("John Mortensen");
+        p5.setEmail("jm1021@gmail.com");
+        p5.setPassword("123Qwerty!");
         try {
-            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("01-05-2006");
+            Date d = new SimpleDateFormat("MM-dd-yyyy").parse("10-21-1959");
             p5.setDob(d);
         } catch (Exception e) {
         }
