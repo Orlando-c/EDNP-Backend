@@ -1,15 +1,13 @@
 package com.nighthawk.spring_portfolio.mvc.person;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
+import static javax.persistence.FetchType.*;
+
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+<<<<<<< HEAD
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +23,20 @@ import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import org.springframework.format.annotation.DateTimeFormat;
+=======
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+>>>>>>> 3ac412c8af551f788e42e003c04d2b3bfbabc37b
 
 import com.vladmihalcea.hibernate.type.json.JsonType;
 
@@ -67,9 +79,6 @@ public class Person {
     @Size(min = 2, max = 30, message = "Name (2 to 30 chars)")
     private String name;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dob;
-
     // To be implemented
     @ManyToMany(fetch = EAGER)
     private Collection<PersonRole> roles = new ArrayList<>();
@@ -88,19 +97,10 @@ public class Person {
     
 
     // Constructor used when building object from an API
-    public Person(String email, String password, String name, Date dob) {
+    public Person(String email, String password, String name) {
         this.email = email;
         this.password = password;
         this.name = name;
-        this.dob = dob;
-    }
-
-    // A custom getter to return age from dob attribute
-    public int getAge() {
-        if (this.dob != null) {
-            LocalDate birthDay = this.dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            return Period.between(birthDay, LocalDate.now()).getYears(); }
-        return -1;
     }
 
     // Initialize static test data 
@@ -108,6 +108,7 @@ public class Person {
 
         // basics of class construction
         Person p1 = new Person();
+<<<<<<< HEAD
         p1.setName("Orlando Carcamo");
         p1.setEmail("orlando@gmail.com");
         p1.setPassword("123Orlando!");
@@ -148,16 +149,39 @@ public class Person {
             p4.setDob(d);
         } catch (Exception e) {
         }
+=======
+        p1.setName("Theo Huntalas");
+        p1.setEmail("theo.h131@gmail.com");
+        p1.setPassword("THEOLOVESCODE");
+
+        Person p2 = new Person();
+        p2.setName("Kaiden Do");
+        p2.setEmail("lexb@gmail.com");
+        p2.setPassword("123LexB!");
+
+        Person p3 = new Person();
+        p3.setName("Rachit Jaiswal");
+        p3.setEmail("rjaiswal.sd.77@gmail.com");
+        p3.setPassword("Iamhungry12#!");
+
+        Person p4 = new Person();
+        p4.setName("Grace Wang");
+        p4.setEmail("grace@gmail.com");
+        p4.setPassword("123Grace!");
+>>>>>>> 3ac412c8af551f788e42e003c04d2b3bfbabc37b
 
         Person p5 = new Person();
         p5.setName("John Mortensen");
         p5.setEmail("jm1021@gmail.com");
         p5.setPassword("123Qwerty!");
+<<<<<<< HEAD
         try {
             Date d = new SimpleDateFormat("MM-dd-yyyy").parse("10-21-1959");
             p5.setDob(d);
         } catch (Exception e) {
         }
+=======
+>>>>>>> 3ac412c8af551f788e42e003c04d2b3bfbabc37b
 
         // Array definition and data initialization
         Person persons[] = {p1, p2, p3, p4, p5};
