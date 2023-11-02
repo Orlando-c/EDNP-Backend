@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*") // added this line
 @RestController // annotation to create a RESTful web services
 @RequestMapping("/api/weather")  //prefix of API
 public class WeatherAPIController {
