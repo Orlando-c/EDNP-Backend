@@ -1,47 +1,33 @@
 <!-- This page is illustrative and contains ideas about HTML formatting -->
 <!DOCTYPE HTML>
 <!-- Signals to the Layout Dialect which layout should be used to decorate this View -->
-<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
-      layout:decorate="~{layouts/base}" lang="en">
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="~{layouts/base}" lang="en">
 
 <head>
     <title>Intro</title>
 </head>
 
 <body>
-<th:block layout:fragment="body" th:remove="tag">
-    <!-- Start of body content specific to page -->
-    <div class="px-5 py-5 mx-auto">
-        <h1><strong>Java Home Page</strong></h1>
-        <div class="row">
-            <div class="col-4">
-                <div class="card">
-                    <img class="card-img-top" th:src="@{/images/java.png}" alt="Java Development" height="250">
-                    <div class="card-body">
-                        <h5 class="card-title">Kevin Du - Scrum Master</h5>
-                        <p class="card-text">
-                            <ol>
-                                <li>My name is Kevin Du and I am this Group's Scrum Master.</li>
-                                <li>I was born on July 6 2007.</li>
-                                <li>I am a junior at Del Norte Highschool and live in 4S Ranch.</li>
-                                <li>I have a older brother and no pets.</li>
-                                <li>I dont walk to school in the mornings.</li>
-                                <li>I get dropped off to school and live at *REDACTED*</li>
-                                <li>I also love playing </li>
-                                <style>
-                                    a {
-                                    color: black;
-                                    text-decoration: none;
-                                    cursor: auto;
-                                    }
-                                    </style>
-                                    <p>
-                                      <a href="https://drive.google.com/file/d/1yu9Q0LPxlSni9WDyQEJzDJ9z4nkBlByP/view?usp=sharing" 
-                                       style="text-decoration: none">chess</a>
-                                    </p>
-                            </ol>
-                        </p>
-                        <a href="#" class="btn btn-primary">More about Kevin Du</a>
+    <th:block layout:fragment="body" th:remove="tag">
+        <!-- Start of body content specific to page -->
+        <div class="px-5 py-5 mx-auto">
+            <h1><strong>Java Home Page</strong></h1>
+            <div class="row">
+                <div class="col-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ url_for('static', filename='assets/pythondb.png') }}" alt="Backend and Persistence" height="250">
+                        <div class="card-body">
+                            <h5 class="card-title">Soham - DevOp</h5>
+                            <p class="card-text">
+                                <ol>
+                                    <li>My name is Soham Kamat.</li>
+                                    <li>I was born on March 9th 2007.</li>
+                                    <li>I'm a junior at Del Norte Highschool, and have lived in 4S Ranch my whole life.</li>
+                                    <li>I have one younger sister.</li>
+                                    <li>I am a huge fan of sports. I love watching and playing cricket, soccer, and basketball.</li>
+                                </ol>
+                            </p>
+                            <a href="#" class="btn btn-primary">More about Soham</a>
                         </div>
                     </div>
                 </div>
@@ -49,17 +35,17 @@
                     <div class="card">
                         <img class="card-img-top" src="{{ url_for('static', filename='assets/python.jpeg') }}" alt="Orlando Carcamo" height="250">
                         <div class="card-body">
-                        <h5 class="card-title">Orlando Carcamo - BackEnd</h5>
-                        <p class="card-text">
-                            <ol>
-                                <li>My name is Orlando Carcamo.</li>
-                                <li>I was born on Decemeber 8th 2006.</li>
-                                <li>I'm a junior at Del Norte Highschool, and haven't lived in 4S Ranch my whole life. (I love tacos, guess where I lived)</li>
-                                <li>I have one younger sister.</li>
-                                <li>I enjoying watching Overwatched Gameplay.</li>
-                            </ol>
-                        </p>
-                        <a href="#" class="btn btn-primary">More about Orlando Carcamo</a>
+                            <h5 class="card-title">Orlando Carcamo - BackEnd</h5>
+                            <p class="card-text">
+                                <ol>
+                                    <li>My name is Orlando Carcamo.</li>
+                                    <li>I was born on December 8th 2006.</li>
+                                    <li>I'm a junior at Del Norte Highschool, and haven't lived in 4S Ranch my whole life. (I love tacos, guess where I lived)</li>
+                                    <li>I have one younger sister.</li>
+                                    <li>I enjoy watching Overwatched Gameplay.</li>
+                                </ol>
+                            </p>
+                            <a href="#" class="btn btn-primary">More about Orlando Carcamo</a>
                         </div>
                     </div>
                 </div>
@@ -71,7 +57,7 @@
                             <p class="card-text">
                                 <ol>
                                     <li>My name is Aniket Chakradeo.</li>
-                                    <li>I was born on Feburary 20th 2007.</li>
+                                    <li>I was born on February 20th 2007.</li>
                                     <li>I'm a junior at Del Norte Highschool, and have lived in 4S Ranch my whole life.</li>
                                     <li>I have one older sister.</li>
                                     <li>I am a huge fan of sports. I love watching and playing cricket, soccer, and tennis.</li>
@@ -81,29 +67,30 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <div class="card">
-                        <img class="card-img-top" src="{{ url_for('static', filename='assets/pythondb.png') }}" alt="Backend and Persistence" height="250">
+                        <img class="card-img-top" th:src="@{/images/java.png}" alt="Java Development" height="250">
                         <div class="card-body">
-                        <h5 class="card-title">Soham - DevOp</h5>
-                        <p class="card-text">
-                            <ol>
-                                <li>My name is Soham Kamat.</li>
-                                <li>I was born on March 9th 2007.</li>
-                                <li>I'm a junior at Del Norte Highschool, and have lived in 4S Ranch my whole life.</li>
-                                <li>I have one younger sister.</li>
-                                <li>I am a huge fan of sports. I love watching and playing cricket, soccer, and basketball.</li>
-                            </ol>
-                        </p>
-                        <a href="#" class="btn btn-primary">More about Soham</a>
+                            <h5 class="card-title">Kevin Du - Scrum Master</h5>
+                            <p class="card-text">
+                                <ol>
+                                    <li>My name is Kevin Du and I am this Group's Scrum Master.</li>
+                                    <li>I was born on July 6 2007.</li>
+                                    <li>I am a junior at Del Norte Highschool and live in 4S Ranch.</li>
+                                    <li>I have an older brother and no pets.</li>
+                                    <li>I don't walk to school in the mornings.</li>
+                                    <li>I get dropped off to school and live at *REDACTED*</li>
+                                    <li>I also love playing chess</li>
+                                </ol>
+                            </p>
+                            <a href="#" class="btn btn-primary">More about Kevin Du</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            
         </div>
-    </div>
-    <!-- End of body content specific to page -->
-</th:block>
+        <!-- End of body content specific to page -->
+    </th:block>
 </body>
 
 </html>
